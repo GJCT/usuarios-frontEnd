@@ -37,14 +37,18 @@
                 </div>
             </div>
             <label>Cédula:</label>
-            <input type="number" class="form-control" 
+            <input type="text" class="form-control" 
             id="cedula" [(ngModel)]="usuario.cedula" 
             name="cedula" required
+            pattern="[0-9]{6,}"
             placeholder="Digite la cédula"
              #cedula="ngModel">
             <div class="alert alert-danger" *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)">
                 <div *ngIf="cedula.errors['required']">
                     Digite la cedula correctamente
+                </div>
+                <div *ngIf="cedula.errors['pattern']">
+                    La cédula debe ser formato numerico de almenos 6 digitos
                 </div>
             </div>
             <label>Email:</label>
@@ -63,8 +67,19 @@
                 </div>
             </div>
             <label>Telefono:</label>
-            <input type="number" class="form-control" 
-            id="telefono" [(ngModel)]="usuario.telefono" name="telefono">
+            <input type="text" class="form-control" 
+            id="telefono" [(ngModel)]="usuario.telefono" name="telefono"
+            pattern="[0-9]{10,}"
+            required placeholder="Digite el télefono"
+            #telefono="ngModel">
+            <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                <div *ngIf="telefono.errors['required']">
+                    Digite el número de telefono
+                </div>
+                <div *ngIf="telefono.errors['pattern']">
+                    El télefono debe ser formato numerico de almenos 10 digitos
+                </div>
+            </div>
         </div>
         <button class="btn btn-success mt-3" [disabled]="!usuarioForm.form.valid">Actualizar</button>
     </form>
