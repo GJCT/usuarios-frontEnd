@@ -1,0 +1,88 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registrar Usuario</h3>
+    <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" class="form-control" 
+            id="nombre" [(ngModel)]="usuario.nombre" 
+            name="nombre" required placeholder="Digite el nombre"
+            minlength="4" maxlength="10" #nombre="ngModel">
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors['required']">
+                    Digite el nombre correctamente
+                </div>
+                <div *ngIf="nombre.errors['minlength']">
+                    Digite el nombre debe ser minimo 4 caracteres
+                </div>
+                <div *ngIf="nombre.errors['maxlength']">
+                    Digite el nombre debe ser maximo 10 caracteres
+                </div>
+            </div>
+            <label>Apellido:</label>
+            <input type="text" class="form-control" 
+            id="apellido" [(ngModel)]="usuario.apellido" 
+            name="apellido" required 
+            placeholder="Digite el apellido"
+            minlength="4" maxlength="10"
+            #apellido="ngModel">
+            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                <div *ngIf="apellido.errors['required']">
+                    Digite el apellido correctamente
+                </div>
+                <div *ngIf="apellido.errors['minlength']">
+                    Digite el apellido debe ser minimo 4 caracteres
+                </div>
+                <div *ngIf="apellido.errors['maxlength']">
+                    Digite el apellido debe ser maximo 10 caracteres
+                </div>
+            </div>
+            <label>Cédula:</label>
+            <input type="text" class="form-control" 
+            id="cedula" [(ngModel)]="usuario.cedula" 
+            name="cedula" required
+            pattern="[0-9]{6,}"
+            placeholder="Digite la cédula"
+            #cedula="ngModel">
+            <div class="alert alert-danger" *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)">
+                <div *ngIf="cedula.errors['required']">
+                    Digite la cedula correctamente
+                </div>
+                <div *ngIf="cedula.errors['pattern']">
+                    La cédula debe ser formato numerico de almenos 6 digitos
+                </div>
+            </div>
+            <label>Email:</label>
+            <input type="email" class="form-control" 
+            id="correo" [(ngModel)]="usuario.correo" 
+            name="correo" 
+            pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+            required placeholder="Digite el email"
+            #correo="ngModel">
+            <div class="alert alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                <div *ngIf="correo.errors['required']">
+                    Digite el email correctamente
+                </div>
+                <div *ngIf="correo.errors['pattern']">
+                    Digite una direción de correo valida, ejemplo: ironman  @gmail.com
+                </div>
+            </div>
+            <label>Telefono:</label>
+            <input type="text" class="form-control" 
+            id="telefono" [(ngModel)]="usuario.telefono" name="telefono"
+            pattern="[0-9]{10}"
+            required placeholder="Digite el télefono"
+            #telefono="ngModel">
+            <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                <div *ngIf="telefono.errors['required']">
+                    Digite el número de telefono
+                </div>
+                <div *ngIf="telefono.errors['pattern']">
+                    El télefono debe ser formato numerico de almenos 6 digitos
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success mt-3" 
+        [disabled]="!usuarioForm.form.valid">
+        Registrar</button>
+    </form>
+</div>
