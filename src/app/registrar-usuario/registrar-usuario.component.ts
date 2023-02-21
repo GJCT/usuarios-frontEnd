@@ -24,7 +24,7 @@ export class RegistrarUsuarioComponent implements OnInit{
       console.log(dato);
       this.listaUsuarios();
     }, error => console.log(error));
-    if(this.usuario.cedula || this.usuario.telefono){
+    if(this.usuario.cedula){
       swal('Usuario en sistema', 'El usuario ya se encuentra registrado', 'error');
       this.listaUsuarios();
     }

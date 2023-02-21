@@ -6,7 +6,7 @@
             <input type="text" class="form-control" 
             id="nombre" [(ngModel)]="usuario.nombre" 
             name="nombre" required placeholder="Digite el nombre"
-            minlength="4" maxlength="10" #nombre="ngModel">
+            minlength="4" #nombre="ngModel">
             <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                 <div *ngIf="nombre.errors['required']">
                     Digite el nombre correctamente
@@ -23,8 +23,7 @@
             id="apellido" [(ngModel)]="usuario.apellido" 
             name="apellido" required 
             placeholder="Digite el apellido"
-            minlength="4" maxlength="10"
-            #apellido="ngModel">
+            minlength="4" #apellido="ngModel">
             <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
                 <div *ngIf="apellido.errors['required']">
                     Digite el apellido correctamente
